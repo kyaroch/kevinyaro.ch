@@ -1,0 +1,45 @@
+html, body {
+   margin: 0;
+   padding: 0;
+}
+
+header {
+  padding: 0px;
+  margin: 0px;
+}
+
+.nav {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  text-align: right;
+  font-family: 'Cabin', 'Helvetica Neue', sans-serif;
+}
+
+.nav ul {
+  list-style-type: none;
+}
+
+div.content {
+  position: relative;
+  margin-top: -1em;
+  padding: 50px 0 0 250px;
+}
+
+
+div.group {
+  max-width: 1200px;
+}
+
+footer {
+  clear: both;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1em;
+}
