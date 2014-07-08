@@ -1,0 +1,22 @@
+<div class="formcontainer">
+<form action="/contact" method="post">
+<ul><li><label for="sender_name">Name: </label>
+    <input type="text" name="sender_name" <%= "value='#{@name}'" %> /></li>
+  <li><label for="sender_email">Email: </label>
+    <input type="text" name="sender_email" <%= "value='#{@email}'" %>></li>
+  <li><label for="subject">Subject: </label>
+    <input type="text" name="subject" <%= "value='#{@subject}'" %>></li>
+</ul>
+<textarea name="message" columns=40 rows=10 ><%= @message %></textarea><br />
+<ul><li><input type="submit" value="Submit"></li></ul>
+</form>
+<% if @sent == :success %>
+  <%= "<p class='success'>Message sent successfully.</p>" %>
+<% elsif @sent == :failure %>
+  <%= "<p class='failure'>Message could not be sent.</p>" %>
+<% end %>
+</div>
+
+<% content_for :title do %>
+  Contact
+<% end %>

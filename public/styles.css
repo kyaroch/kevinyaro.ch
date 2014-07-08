@@ -22,6 +22,7 @@ header {
   line-height: 1.5em;
   font-weight: bold;
 }
+
 .nav a {
   text-decoration: none;
   color: #000000;
@@ -29,19 +30,56 @@ header {
 
 div.content {
   position: relative;
-  margin: 70px 0 0 250px;
+  margin: 70px 0 0 280px;
   font-family: 'Helvetica Neue', sans-serif;
 }
 
 
 div.group {
-  max-width: 1200px;
+  max-width: 1000px;
+}
+
+div.col {
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+
+div.formcontainer {
+  max-width: 500px;
+  float: left;
+  line-height: 1.5em;
+}
+
+.formcontainer li {
+  float: right;
+}
+
+.formcontainer input {
+    margin-right: 0;
+}
+
+.formcontainer textarea {
+  width: 100%;
+}
+
+.content ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.content a {
+  text-decoration: none;
+  color: rgb(128, 128, 128);
 }
 
 footer {
   clear: both;
   text-align: center;
   font-size: 0.5em;
+  padding-top: 50px;
+  color: rgb(100, 100, 100);
 }
 
 h1 {
@@ -51,8 +89,19 @@ h1 {
 
 h2 {
   font-size: 1em;
+  margin: 0;
 }
 
 p {
   max-width: 800px;
+}
+
+p.success {
+  clear: both;
+  background-color: #58FA58;
+}
+
+p.failure {
+  clear: both;
+  background-color: #FA5858;
 }
