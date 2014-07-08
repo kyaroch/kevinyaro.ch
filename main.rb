@@ -44,6 +44,10 @@ get '/contact' do
   erb :contact, :layout => :layout
 end
 
+get '/gallery' do
+  erb :gallery, :layout => :layout
+end
+
 post '/contact' do
   info = params[:sender_name], params[:sender_email], params[:subject], params[:message]
   @sent = record_message(info)
