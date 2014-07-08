@@ -20,16 +20,16 @@ header {
   list-style-type: none;
   margin-top: 1em;
   line-height: 1.5em;
+  font-weight: bold;
 }
-
 .nav a {
   text-decoration: none;
-  font-weight: bold;
+  color: #000000;
 }
 
 div.content {
   position: relative;
-  padding: 54px 0 0 250px;
+  margin: 70px 0 0 250px;
   font-family: 'Helvetica Neue', sans-serif;
 }
 
@@ -51,4 +51,8 @@ h1 {
 
 h2 {
   font-size: 1em;
+}
+
+p {
+  max-width: 800px;
 }

@@ -15,3 +15,11 @@ end
 get '/' do
   erb :index, :layout => :layout
 end
+
+get '/links' do
+  erb :links, :layout => :layout
+end
+
+get '/index' do
+  redirect to('/')
+end
