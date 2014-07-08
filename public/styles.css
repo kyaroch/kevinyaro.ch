@@ -18,12 +18,19 @@ header {
 
 .nav ul {
   list-style-type: none;
+  margin-top: 1em;
+  line-height: 1.5em;
+}
+
+.nav a {
+  text-decoration: none;
+  font-weight: bold;
 }
 
 div.content {
   position: relative;
-  margin-top: -1em;
-  padding: 50px 0 0 250px;
+  padding: 54px 0 0 250px;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
 
@@ -34,10 +41,12 @@ div.group {
 footer {
   clear: both;
   text-align: center;
+  font-size: 0.5em;
 }
 
 h1 {
   font-size: 1.5em;
+  margin-bottom: 0;
 }
 
 h2 {
