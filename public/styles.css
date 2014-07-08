@@ -3,9 +3,8 @@ html, body {
    padding: 0;
 }
 
-header {
-  padding: 0px;
-  margin: 0px;
+div.group {
+  max-width: 1000px;
 }
 
 .nav {
@@ -32,11 +31,6 @@ div.content {
   position: relative;
   margin: 70px 0 0 280px;
   font-family: 'Helvetica Neue', sans-serif;
-}
-
-
-div.group {
-  max-width: 1000px;
 }
 
 div.col {
