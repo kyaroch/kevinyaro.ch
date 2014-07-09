@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/contrib/all"
 require "securerandom"
+require "mail"
 
 class HomePage < Sinatra::Base
   register Sinatra::Contrib
@@ -16,9 +17,9 @@ class HomePage < Sinatra::Base
     end
   
     def record_message(info)
-      name, email, subject, message = info
+      name, email, mail_subj, message = info
       begin
-        file_subj = subject.dup
+        file_subj = mail_subj.dup
         if File.exist?("messages/#{subject}") || subject.empty?
           file_subj << SecureRandom.hex
         end
@@ -28,10 +29,27 @@ class HomePage < Sinatra::Base
           file << "Time: #{Time.now.getutc}\n"
           file << message
         end
-        :success
-      rescue
-        :failure
+      rescue Exception => e
+        STDERR.puts e.message
+        STDERR.puts e.backtrace.inspect
       end
+      begin
+        Mail.defaults do
+          delivery_method :smtp, { :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE }
+        end
+
+        Mail.deliver do
+          from 'www-data@kevinyaro.ch'
+          to 'kjyaroch@gmail.com'
+          subject mail_subj
+          body message
+        end
+      rescue
+        STDERR.puts e.message
+        STDERR.puts e.backtrace.inspect
+        return :failure
+      end
+      :success
     end
   end
 
