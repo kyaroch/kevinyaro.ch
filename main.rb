@@ -44,7 +44,7 @@ class HomePage < Sinatra::Base
           subject mail_subj
           body "From: #{email}\n\n#{message}"
         end
-      rescue
+      rescue Exception => e
         STDERR.puts e.message
         STDERR.puts e.backtrace.inspect
         return :failure
