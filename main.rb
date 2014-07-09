@@ -20,7 +20,7 @@ class HomePage < Sinatra::Base
       name, email, mail_subj, message = info
       begin
         file_subj = mail_subj.dup
-        if File.exist?("messages/#{subject}") || subject.empty?
+        if File.exist?("messages/#{file_subj}") || subject.empty?
           file_subj << SecureRandom.hex
         end
         File.open("messages/#{file_subj}", "w") do |file|
