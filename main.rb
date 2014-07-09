@@ -42,7 +42,7 @@ class HomePage < Sinatra::Base
           from 'www-data@kevinyaro.ch'
           to 'kjyaroch@gmail.com'
           subject mail_subj
-          body message
+          body "From: #{email}\n\n#{message}"
         end
       rescue
         STDERR.puts e.message
