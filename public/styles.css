@@ -93,9 +93,13 @@ p {
 p.success {
   clear: both;
   background-color: #58FA58;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 p.failure {
   clear: both;
   background-color: #FA5858;
+  padding: 2px;
+  border-radius: 5px;
 }
