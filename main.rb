@@ -70,7 +70,7 @@ class HomePage < Sinatra::Base
     @name, @email, @subject, @message = info if @sent == :failure #If message not sent, user doesn't lose whatever they typed
     erb :contact, :layout => :layout
   end
-
+  
   get '/*' do
     viewname = params[:splat].first
     if File.exists?("views/#{viewname}.erb")
@@ -79,5 +79,5 @@ class HomePage < Sinatra::Base
       not_found
     end
   end
-
+  
 end

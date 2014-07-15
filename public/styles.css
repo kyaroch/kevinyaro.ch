@@ -45,8 +45,8 @@ div.formcontainer {
   line-height: 1.5em;
 }
 
-.formcontainer li {
-  float: right;
+.formcontainer ul {
+  text-align: right;
 }
 
 .formcontainer input {
