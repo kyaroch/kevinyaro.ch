@@ -1,2 +1,4 @@
 unicorn.rb
 /messages/*
+/logs/*
+/pids/*

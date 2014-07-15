@@ -61,6 +61,10 @@ class HomePage < Sinatra::Base
     erb :index, :layout => :layout
   end
 
+  not_found do
+    erb :notfound, :layout => :layout
+  end
+
   get '/links' do
     erb :links, :layout => :layout
   end
