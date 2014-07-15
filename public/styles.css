@@ -4,7 +4,7 @@ html, body {
 }
 
 div.group {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 .nav {
@@ -87,7 +87,28 @@ h2 {
 }
 
 p {
-  max-width: 800px;
+  max-width: 700px;
+}
+
+img.gallery {
+  max-height: 700px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.caption {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.caption a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.5em;
 }
 
 p.success {

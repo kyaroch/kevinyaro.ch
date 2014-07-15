@@ -2,6 +2,7 @@ require "sinatra/base"
 require "sinatra/contrib/all"
 require "securerandom"
 require "mail"
+require "yaml"
 
 class HomePage < Sinatra::Base
   register Sinatra::Contrib
@@ -15,7 +16,14 @@ class HomePage < Sinatra::Base
         "#{base_title} | #{name}"
       end
     end
-  
+    
+    def get_img_links(pairs, current)
+      max = pairs.keys.max
+      prev_img = current == 0 ? max : current - 1
+      next_img = current == max ? 0 : current + 1
+      return [prev_img, next_img]
+    end
+    
     def record_message(info)
       name, email, mail_subj, message = info
       begin
@@ -69,6 +77,21 @@ class HomePage < Sinatra::Base
     @sent = record_message(info)
     @name, @email, @subject, @message = info if @sent == :failure #If message not sent, user doesn't lose whatever they typed
     erb :contact, :layout => :layout
+  end
+  
+  get '/gallery' do
+    redirect '/gallery/0'
+  end
+  
+  get '/gallery/:id' do
+    File.open('public/gallery.yaml') do |img_data|
+      img_num = params[:id].to_i
+      pairs = YAML.load(img_data)
+      @image = pairs[img_num]['image']
+      @caption = pairs[img_num]['caption']
+      @prev_img, @next_img = get_img_links(pairs, img_num)
+      erb :gallery, :layout => :layout
+    end
   end
   
   get '/*' do
