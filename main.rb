@@ -56,25 +56,12 @@ class HomePage < Sinatra::Base
     end
   end
 
-  #Is there a way to route all these static pages in the same block? Probably. I should find out how.
   get '/' do
     erb :index, :layout => :layout
   end
 
   not_found do
     erb :notfound, :layout => :layout
-  end
-
-  get '/links' do
-    erb :links, :layout => :layout
-  end
-
-  get '/contact' do
-    erb :contact, :layout => :layout
-  end
-
-  get '/gallery' do
-    erb :gallery, :layout => :layout
   end
 
   post '/contact' do
@@ -84,8 +71,13 @@ class HomePage < Sinatra::Base
     erb :contact, :layout => :layout
   end
 
-  get '/index' do
-    redirect to('/')
+  get '/*' do
+    viewname = params[:splat].first
+    if File.exists?("views/#{viewname}.erb")
+      erb viewname.to_sym, :layout => :layout
+    else
+      not_found
+    end
   end
 
 end
