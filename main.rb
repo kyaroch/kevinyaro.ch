@@ -6,7 +6,11 @@ require "yaml"
 
 class HomePage < Sinatra::Base
   register Sinatra::Contrib
-
+  
+  configure do
+    enable :logging
+  end
+  
   helpers do
     def get_title(name)
       base_title = "kevinyaro.ch"
@@ -21,7 +25,7 @@ class HomePage < Sinatra::Base
       max = pairs.keys.max
       prev_img = current == 0 ? max : current - 1
       next_img = current == max ? 0 : current + 1
-      return [prev_img, next_img]
+      [prev_img, next_img]
     end
     
     def record_message(info)
@@ -37,10 +41,8 @@ class HomePage < Sinatra::Base
           file << "Time: #{Time.now.getutc}\n\n"
           file << message
         end
-      rescue Exception => e
+      rescue => e
         STDERR.puts e.message
-        STDERR.puts e.backtrace.inspect
-        #Error not made apparent to user
       end
       begin
         #Server SSL cert not valid for 'localhost'
@@ -53,30 +55,31 @@ class HomePage < Sinatra::Base
           from 'www-data@kevinyaro.ch'
           to 'kjyaroch@gmail.com'
           subject mail_subj
-          body "From: #{email}\n\n#{message}"
+          body "From: #{name} (#{email})\n\n#{message}"
         end
-      rescue Exception => e
+      rescue => e
         STDERR.puts e.message
-        STDERR.puts e.backtrace.inspect
         return :failure #Displays nonspecific error message to user; see view
       end
       :success
     end
   end
-
+  
+  set :layout => true
+  
   get '/' do
-    erb :index, :layout => :layout
+    erb :index
   end
 
   not_found do
-    erb :notfound, :layout => :layout
+    erb :notfound
   end
 
   post '/contact' do
     info = params[:sender_name], params[:sender_email], params[:subject], params[:message]
     @sent = record_message(info)
     @name, @email, @subject, @message = info if @sent == :failure #If message not sent, user doesn't lose whatever they typed
-    erb :contact, :layout => :layout
+    erb :contact
   end
   
   get '/gallery' do
@@ -90,14 +93,14 @@ class HomePage < Sinatra::Base
       @image = pairs[img_num]['image']
       @caption = pairs[img_num]['caption']
       @prev_img, @next_img = get_img_links(pairs, img_num)
-      erb :gallery, :layout => :layout
+      erb :gallery
     end
   end
   
   get '/*' do
     viewname = params[:splat].first
     if File.exists?("views/#{viewname}.erb")
-      erb viewname.to_sym, :layout => :layout
+      erb viewname.to_sym
     else
       not_found
     end
