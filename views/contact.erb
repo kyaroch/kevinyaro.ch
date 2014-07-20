@@ -10,12 +10,13 @@
 <textarea name="message" columns=40 rows=10 ><%= @message %></textarea><br />
 <ul><li><input type="submit" value="Submit"></li></ul>
 </form>
-<% if @sent == :success %>
+<% if @sent == true %>
   <%= "<p class='success'>Message sent successfully.</p>" %>
-<% elsif @sent == :failure %>
+<% elsif @sent == false %>
   <%= "<p class='failure'>Message could not be sent.</p>" %>
 <% end %>
-<p>Email address is optional, but please include some sort of contact info if you'd like a response.</p>
+<p>Email address is optional, but please include some sort of contact info if you'd like a response. Since this website does
+ not (yet) have an SSL certificate, do not include sensitive information.</p>
 </div>
 
 <% content_for :title do %>

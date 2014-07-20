@@ -59,9 +59,9 @@ class HomePage < Sinatra::Base
         end
       rescue => e
         STDERR.puts e.message
-        return :failure #Displays nonspecific error message to user; see view
+        return false #Displays nonspecific error message to user; see view
       end
-      :success
+      true
     end
   end
   
