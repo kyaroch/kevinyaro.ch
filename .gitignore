@@ -1,4 +1,8 @@
+config.ru
 unicorn.rb
 /messages/*
 /logs/*
 /pids/*
+*.jpg
+*.png
+*.yaml

@@ -78,7 +78,7 @@ class HomePage < Sinatra::Base
   post '/contact' do
     info = params[:sender_name], params[:sender_email], params[:subject], params[:message]
     @sent = record_message(info)
-    @name, @email, @subject, @message = info if @sent == :failure #If message not sent, user doesn't lose whatever they typed
+    @name, @email, @subject, @message = info if @sent == false #If message not sent, user doesn't lose whatever they typed
     erb :contact
   end
   
