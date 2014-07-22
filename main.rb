@@ -54,6 +54,7 @@ class HomePage < Sinatra::Base
         Mail.deliver do
           from 'www-data@kevinyaro.ch'
           to 'kjyaroch@gmail.com'
+          reply_to email
           subject mail_subj
           body "From: #{name} (#{email})\n\n#{message}"
         end
