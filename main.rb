@@ -50,7 +50,6 @@ class HomePage < Sinatra::Base
         Mail.defaults do
           delivery_method :smtp, { :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE }
         end
-
         Mail.deliver do
           from 'www-data@kevinyaro.ch'
           to 'kjyaroch@gmail.com'
@@ -60,7 +59,7 @@ class HomePage < Sinatra::Base
         end
       rescue => e
         STDERR.puts e.message
-        return false #Displays nonspecific error message to user; see view
+        return false
       end
       true
     end
